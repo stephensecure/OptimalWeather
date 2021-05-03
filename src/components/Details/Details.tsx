@@ -108,11 +108,11 @@ export default function Details(props: responseData) {
       )}
       {props.weatherObj?.data && props.type === 'sixteenDays' && (
         <>
-          <Temperature
+          {/* <Temperature
             handleNumberInput={handleInput}
             selectFilter={selectFilter}
             getTemperatures={getFilteredTemps}
-          />
+          /> */}
           <div> 
           <h3 className='city-style'><strong>{props.weatherObj.city_name}</strong></h3>
           <h3 className='city-style'>{currentDate.toDateString()}</h3>

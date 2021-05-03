@@ -1,45 +1,20 @@
+Project test done by Oladapo Stephen Ayoola.
 
-## Getting set up
+// Run this Project
+1. yarn install
+2. yarn start
 
-To get the site up and running, follow these simple steps:
+// HOT TO USE APPLICATION
+Click on Current weather for todays weather forecast or 16 days forecast for the next 16 days data, 
+Click on the city you want the data for 
+Click on “Todays forecast” for current weather report or “16 days forecast”  for the 16 days weather report and the data will append below.
 
-Login to rapidapi, register and get an API key. https://rapidapi.com/weatherbit/api/weather 
-e.g. weather/rapid_api.png
-
-Open the getWeatherForecast.tsx file and insert your API key in the "x-rapidapi-key" section.
-
-```bash
-# Install dependencies
-npm install
-
-# The following steps will need to be run in different processes
-npm start
-
-# Serve site in 'watch' mode, automatically open default browser
-npm run serve
+// WHAT I HAVE DONE
+I used the weather data from rapidApi to create Todays and 16 days weather report with a set list of cities.
+Using rapidAPI host and key to fetch the weather object, getWeatherForecast calls fetchData, fetchData makes the request to the API using the selected forecastType and city, saves the data in jsonRes and sets it as the WeatherObj.
+CurrentForecast and SixteenDaysForecast use the data received from the getWeatherForecast response, sets it into the weatherObj using getWeather and populates the current weather report into the Weather and Details component.
+The Details component appends the data below. 
 
 
-By default, the JSON server runs at `http://localhost:3000`, 
-
-To run the test suites, you can use the following commands:
-
-# Single run of test suites
-npm run test
-
-# Run test suites in 'watch' mode
-npm run test:watch
-```
-
-## Commands
-
-Run commands via NPM e.g. `npm run test:watch` from the project root.
-
-| Command      | Description                                    |
-| ------------ | ---------------------------------------------- |
-| `test`       | Single run of test suites                      |
-| `test:watch` | Run test suites in 'watch' mode                |
-| `clean`      | Delete compiled assets                         |
-| `db`         | Serve JSON data                                |
-| `serve`      | Serve site, automatically open default browser |
-
-
+//  FEATURES
+I used React and typescript
