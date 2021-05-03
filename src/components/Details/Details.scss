@@ -1,0 +1,43 @@
+.detailsbody {
+  display: flex;
+  flex-direction: column;
+  min-height: 100px;
+  background-color: aqua;
+}
+
+.warning {
+  color: red;
+}
+
+.weather-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 100px;
+  @media only screen and (max-width: 414px) {
+    padding-bottom: 64px;
+  }
+}
+
+.day {
+  flex: 1 0 21%;
+  padding: 12px;
+}
+
+.day:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.image {
+  width: 5em;
+  height: auto;
+}
+
+dd {
+  margin: auto;
+}
+
+.city-style {
+  font-size: 2em;
+  padding: 0;
+  margin: 10px;
+}
