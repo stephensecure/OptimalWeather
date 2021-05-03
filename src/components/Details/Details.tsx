@@ -1,6 +1,4 @@
 import React, { useState } from 'react'
-import Temperature from '../Temperature/Temperature'
-import handleSetFilter from '../../utils/handleSetState'
 import './Details.scss'
 
 interface dataObj {
@@ -34,21 +32,6 @@ export const getDataToRender = (
   return renderFiltered ? dataArr : props.weatherObj?.data
 }
 
-export const filterData = (props: responseData) => (
-  minOrMaxValue: string,
-  inputValue: number
-) => (setData: (value: any) => void) => {
-  const filtered = props?.weatherObj?.data?.filter((day) => {
-    if (minOrMaxValue === 'min') {
-      return day.min_temp <= inputValue
-    }
-    if (minOrMaxValue === 'max') {
-      return day.max_temp >= inputValue
-    }
-  })
-  setData(filtered)
-}
-
 export const handleNumberInput = (setValue: (value: number) => void) => (
   e: React.FormEvent<HTMLInputElement>
 ) => {
@@ -56,32 +39,9 @@ export const handleNumberInput = (setValue: (value: number) => void) => (
   setValue(parseInt(target.value))
 }
 
-export const getFiltered = (
-  setRenderFiltered: (value: boolean) => void,
-  props: responseData,
-  filter: string,
-  value: number,
-  setData: (value: any) => void
-) => (e: React.SyntheticEvent) => {
-  e.preventDefault()
-  filterData(props)(filter, value)(setData)
-  setRenderFiltered(true)
-}
-
 export default function Details(props: responseData) {
-  const [value, setValue] = useState<number>(0)
-  const handleInput = handleNumberInput(setValue)
   const [data, setData] = useState<[]>([])
   const [renderFiltered, setRenderFiltered] = useState(false)
-  const [filter, setFilter] = useState<string>('')
-  const selectFilter = handleSetFilter(setFilter)
-  const getFilteredTemps = getFiltered(
-    setRenderFiltered,
-    props,
-    filter,
-    value,
-    setData
-  )
   const dataToRender = getDataToRender(renderFiltered, data, props)
   const currentDate = new Date();
   const dateForecast = (datafordate: string) => {
@@ -108,11 +68,6 @@ export default function Details(props: responseData) {
       )}
       {props.weatherObj?.data && props.type === 'sixteenDays' && (
         <>
-          {/* <Temperature
-            handleNumberInput={handleInput}
-            selectFilter={selectFilter}
-            getTemperatures={getFilteredTemps}
-          /> */}
           <div> 
           <h3 className='city-style'><strong>{props.weatherObj.city_name}</strong></h3>
           <h3 className='city-style'>{currentDate.toDateString()}</h3>
